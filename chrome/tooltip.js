@@ -1,35 +1,17 @@
 $(function() {
-	$('body').prepend($('<div>', {class: 'tooltip'}));
+	let glossary = {}
 
-	$('body').mouseup((e) => {
-		let selection = window.getSelection()
-		let selectionText = selection.toString().trim()
-		if (selectionText !== "") {
-			let rect = selection.getRangeAt(0).getBoundingClientRect()
-			displayTooltip(rect, selectionText)
-		}
+	chrome.storage.sync.get('english-glossary', (data) => {
+		fetch(data['english-glossary'])
+			.then((resp) => resp.json())
+			.then((json) => {
+				glossary = json
+				console.log('Finished loading translation glossary')
+			})
 	})
-	$('.tooltip').click(() => {
-		$('.tooltip').css({'visibility': 'hidden'})
-	})
+
+	chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+		    if (request.enabled)
+		      	console.log(glossary)
+	 });
 })
-
-function getSelectionText() {
-    let text = "";
-    if (window.getSelection) {
-        text = window.getSelection().toString();
-    } else if (document.selection && document.selection.type != "Control") {
-        text = document.selection.createRange().text;
-    }
-    return text;
-}
-
-function displayTooltip(rect, selection) {
-	let tt = $('.tooltip')
-	tt.text("hi")
-	tt.css({
-		'left': (rect.left + rect.width/2 - tt.width()/2) + 'px',
-		'top': (rect.top - 40) + 'px',
-		'visibility': 'visible'
-	})
-}
