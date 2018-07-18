@@ -1,0 +1,16 @@
+{
+    "name": "Tooltip",
+    "version": "1.0",
+    "description": "Translation tooltip",
+    "manifest_version": 2,
+    "permissions": [
+      "activeTab"
+    ],
+    "content_scripts":[
+        {
+            "matches": ["https://*.kiva.org/*", "<all_urls>"],
+            "css": ["styles.css"],
+            "js": ["jquery-3.3.1.min.js", "tooltip.js"]
+        }
+    ]
+}
