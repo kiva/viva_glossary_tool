@@ -3,13 +3,28 @@ $(function() {
 
 	$( document ).tooltip();
 
-	chrome.storage.sync.get('english-glossary', (data) => {
-		fetch(data['english-glossary'])
+	// get language
+	let language = "russian"
+	let langElement = $('.editorLoanLanguage')
+	if (langElement.length) {
+		let content = langElement.html()
+		language = content.substring(content.indexOf('<span>') + '<span>'.length, content.indexOf('<br>')).toLowerCase()
+	}
+
+	let glossaryName = language + '-glossary'
+
+	// get glossary
+	chrome.storage.sync.get(glossaryName, (data) => {
+		fetch(data[glossaryName])
 			.then((resp) => resp.json())
 			.then((json) => {
 				glossary = {...json[''], ...json[getCountry()]}
-				console.log('Finished loading translation glossary')
+				console.log(`Finished loading ${language} glossary`)
 				highlightTerms()
+			})
+			.catch((err) => {
+				console.log(`Could not load ${language} glossary`)
+				console.log(err)
 			})
 	})
 

@@ -1,8 +1,16 @@
+let languages = ['english', 'spanish', 'french', 'portuguese', 'russian']
+
 chrome.runtime.onInstalled.addListener(function() {
 
-	const url = chrome.runtime.getURL('data/english-glossary.json');
+	for (let i in languages) {
+		let lang = languages[i]
+		let glossaryName = lang + '-glossary'
+		const url = chrome.runtime.getURL('data/' + glossaryName + '.json');
 
-	chrome.storage.sync.set({'english-glossary': url}, function() {
-        console.log('glossary set!');
-    });
+		let obj = {}
+		obj[glossaryName] = url
+		chrome.storage.sync.set(obj, function() {
+	        console.log(lang + ' glossary set!');
+	    });
+	}
 });
