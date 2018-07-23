@@ -9,6 +9,7 @@
 
 .viva-tooltip {
     visibility: hidden;
+    opacity: 0;
     width: 10rem;
     background-color: black;
     color: #fff;
@@ -22,11 +23,13 @@
     bottom: 100%;
     left: 50%;
     margin-left: -5rem;
+    transition: 0.3s;
 }
 
 
 .highlight:hover .viva-tooltip {
     visibility: visible;
+    opacity: 1;
 }
 
 #ac-loan-story-body {
