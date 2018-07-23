@@ -1,0 +1,34 @@
+.highlight {
+	text-decoration: none;
+	line-height: 1.25em;
+	border-bottom: #333 1px dotted;
+	color: #22a9d8;
+	cursor: pointer;
+	position: relative;
+}
+
+.viva-tooltip {
+    visibility: hidden;
+    width: 10rem;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5rem;
+}
+
+
+.highlight:hover .viva-tooltip {
+    visibility: visible;
+}
+
+#ac-loan-story-body {
+	overflow: visible;
+}

@@ -1,0 +1,27 @@
+{
+    "name": "Tooltip",
+    "version": "1.0",
+    "description": "Translation tooltip",
+    "manifest_version": 2,
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "content_scripts":[
+        {
+            "matches": ["https://*.kiva.org/lend/*"],
+            "css": ["styles.css", "external/jquery-ui.min.css"],
+            "js": ["external/jquery-3.3.1.min.js", "external/jquery-ui.min.js", "content.js"]
+        }
+    ],
+    "web_accessible_resources": [
+        "data/*.json"
+    ],
+    "browser_action": {
+        "default_popup": "popup.html"
+    }
+}
