@@ -1,0 +1,22 @@
+select, form {
+	display:inline-block
+}
+
+body {
+	width: 16rem;
+	padding: 0.5rem;	
+}
+
+#results {
+	margin-top: 0.8rem;
+	font-size: 14pt;
+	color: darkgrey
+}
+
+.definition {
+	color: black!important;
+}
+
+.forumbee-link {
+	font-size: 11pt;
+}

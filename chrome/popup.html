@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-      	<!-- <style>
-        	button {
-	          height: 30px;
-	          width: 30px;
-	          outline: none;
-	        }
-      	</style> -->
+      	<link rel="stylesheet" href="popup.css">
     </head>
   	<body>
-	    <button>Log the glossary</button>
-	    <script src="jquery-3.3.1.min.js"></script>
+  		<form>
+  			<input type="text" id="search-input" placeholder="Search the glossary">
+  		</form>
+  		<select id="countries">
+  		</select>
+	    <div id="results">The definition will appear here.</div>
+	    <script src="external/jquery-3.3.1.min.js"></script>
 	    <script src="popup.js"></script>
   	</body>
 </html>
