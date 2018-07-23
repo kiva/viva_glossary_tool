@@ -19,10 +19,11 @@
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
-    top: 10px;
-    left: 105%;
-    transform: translateY(-50%)
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5rem;
 }
+
 
 .highlight:hover .viva-tooltip {
     visibility: visible;
