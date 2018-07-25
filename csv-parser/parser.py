@@ -43,7 +43,7 @@ for row in reader:
 
     # parse and trim title to remove multiple words    
     title = row[1].lower()
-    match = re.search(r'( [^ a-zA-Z0-9\-]| or)', title)
+    match = re.search(r'( [^ a-zA-Z0-9\-]| or|/)', title)
     if match:
         title = title[:match.start(0)]
 
