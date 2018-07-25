@@ -57,7 +57,7 @@ $(function() {
 		let glossaryName = name + '-glossary'
 		chrome.storage.local.get(glossaryName, (data) => {
 			glossary = data[glossaryName]
-			for (let country in glossary) {
+			for (let country of Object.keys(glossary).sort()) {
 				if (country !== '')
 					$('#countries').append(`<option value="${country}">${country}</option>`)
 			}
