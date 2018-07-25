@@ -10,7 +10,7 @@
 .viva-tooltip {
     visibility: hidden;
     opacity: 0;
-    width: 10rem;
+    width: 12rem;
     background-color: black;
     color: #fff;
     text-align: center;
@@ -22,7 +22,7 @@
     z-index: 1;
     bottom: 100%;
     left: 50%;
-    margin-left: -5rem;
+    margin-left: -6rem;
     transition: 0.3s;
 }
 

@@ -3,7 +3,12 @@
 }
 
 #input {
-	margin-right: 5px
+	margin-right: 10px
+}
+
+#search-input {
+	font-size:12pt;
+	width: 10rem;
 }
 
 form, input {
@@ -20,7 +25,7 @@ select {
 }
 
 body {
-	width: 16rem;
+	width: 20rem;
 	padding: 0.5rem;	
 }
 

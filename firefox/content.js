@@ -55,8 +55,13 @@ $(function() {
 		}
 		// add links and tooltip
 		$('.highlight').each(function() {
-			$(this).find('a').attr('href', 'https://kiva.forumbee.com' + glossary[$(this).text()].url)
-			$(this).append(`<span class="viva-tooltip"><span style="text-decoration:underline">${language.charAt(0).toUpperCase() + language.slice(1)}</span>: ${glossary[$(this).text()].meaning}</span>`)
+			let entry = glossary[$(this).text().toLowerCase()]
+			let meaning = entry.meaning
+			if (language.length + meaning.length > 128) {
+				meaning = meaning.substring(0, 128 - language.length - '...'.length) + '...'
+			}
+			$(this).find('a').attr('href', 'https://kiva.forumbee.com' + entry.url)
+			$(this).append(`<span class="viva-tooltip"><span style="text-decoration:underline">${language.charAt(0).toUpperCase() + language.slice(1)}</span>: ${meaning}</span>`)
 		})
 	}
 

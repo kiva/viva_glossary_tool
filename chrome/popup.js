@@ -48,7 +48,7 @@ $(function() {
 
 	function getTerm(term) {
 		let country = $('#countries').val()
-		if (glossary[country][term] !== undefined) {
+		if (country && glossary[country][term]) {
 			return glossary[country][term]
 		} else {
 			return glossary[''][term]
