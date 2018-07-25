@@ -1,5 +1,22 @@
-select, form {
-	display:inline-block
+#input, #options {
+	display:inline-block;
+}
+
+#input {
+	margin-right: 5px
+}
+
+form, input {
+	height: 100%
+}
+
+#searchbar {
+	flex-direction: row;
+	display: flex;
+}
+
+select {
+	display: block;
 }
 
 body {

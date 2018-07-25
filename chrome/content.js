@@ -4,7 +4,7 @@ $(function() {
 	$( document ).tooltip();
 
 	// get language
-	let language = "russian"
+	let language = 'english'
 	let langElement = $('.editorLoanLanguage')
 	if (langElement.length) {
 		let content = langElement.html()
@@ -28,15 +28,16 @@ $(function() {
 			})
 	})
 
-	// just an example of communication between content script and popup script
+	// gives the popup info about this page
 	chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-		    if (request.enabled)
-		      	console.log(glossary)
+		    if (request.type == 'VIVA_PAGE_INFO') {
+		    	sendResponse({country: getCountry(), language: language})
+		    }
 	});
 
 	function getCountry() {
 		let location = $('a[href="#country-section"]').text()
-		return location.slice(location.indexOf(',') + 2)
+		return location.slice(location.lastIndexOf(',') + 2)
 	}
 
 	function highlightTerms() {
@@ -55,7 +56,7 @@ $(function() {
 		// add links and tooltip
 		$('.highlight').each(function() {
 			$(this).find('a').attr('href', 'https://kiva.forumbee.com' + glossary[$(this).text()].url)
-			$(this).append(`<span class="viva-tooltip">${glossary[$(this).text()].meaning}</span>`)
+			$(this).append(`<span class="viva-tooltip"><span style="text-decoration:underline">${language.charAt(0).toUpperCase() + language.slice(1)}</span>: ${glossary[$(this).text()].meaning}</span>`)
 		})
 	}
 
