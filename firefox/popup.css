@@ -42,3 +42,8 @@ body {
 .forumbee-link {
 	font-size: 11pt;
 }
+
+#reload {
+	text-decoration: underline;
+	cursor: pointer;
+}

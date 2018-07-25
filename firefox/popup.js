@@ -8,11 +8,9 @@ $(function() {
 			if (resp) {
 				pageCountry = resp.country
 				pageLang = resp.language
-				console.log(resp)
 			}
 
 			$('#languages').val(pageLang)
-			console.log(pageCountry)
 		});
 	});
 	
@@ -57,17 +55,18 @@ $(function() {
 
 	function getGlossary(name, callback) {
 		let glossaryName = name + '-glossary'
-		browser.storage.sync.get(glossaryName, (data) => {
-			fetch(data[glossaryName])
-				.then((resp) => resp.json())
-				.then((json) => {
-					glossary = json
-					for (let country in glossary) {
-						if (country !== '')
-							$('#countries').append(`<option value="${country}">${country}</option>`)
-					}
-				}).then(callback)
+		browser.storage.local.get(glossaryName, (data) => {
+			glossary = data[glossaryName]
+			for (let country in glossary) {
+				if (country !== '')
+					$('#countries').append(`<option value="${country}">${country}</option>`)
+			}
+			callback()
 		})
 	}
+
+	$('#reload').click(function() {
+		browser.runtime.reload()
+	})
 })
 
