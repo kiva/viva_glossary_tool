@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+      	<link rel="stylesheet" href="popup.css">
+    </head>
+  	<body>
+  		<div id="searchbar">
+	  		<div id="input">
+		  		<form>
+		  			<input type="text" id="search-input" placeholder="Search the glossary">
+	  			</form>
+	  		</div>
+	  		<div id="options">
+	  			<select id="languages">
+	  				<option value="english">English</option>
+	  				<option value="french">French</option>
+	  				<option value="portuguese">Portuguese</option>
+	  				<option value="russian">Russian</option>
+	  				<option value="spanish">Spanish</option>
+	  			</select>
+		  		<select id="countries"></select>
+		  	</div>
+		  </div>
+	    <div id="results">The definition will appear here.</div>
+	    <script src="external/jquery-3.3.1.min.js"></script>
+	    <script src="popup.js"></script>
+  	</body>
+</html>

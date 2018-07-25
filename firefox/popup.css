@@ -1,0 +1,39 @@
+#input, #options {
+	display:inline-block;
+}
+
+#input {
+	margin-right: 5px
+}
+
+form, input {
+	height: 100%
+}
+
+#searchbar {
+	flex-direction: row;
+	display: flex;
+}
+
+select {
+	display: block;
+}
+
+body {
+	width: 16rem;
+	padding: 0.5rem;	
+}
+
+#results {
+	margin-top: 0.8rem;
+	font-size: 14pt;
+	color: darkgrey
+}
+
+.definition {
+	color: black!important;
+}
+
+.forumbee-link {
+	font-size: 11pt;
+}
