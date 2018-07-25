@@ -1,5 +1,6 @@
 import csv
 import json
+import re
 
 def getPathInput():
     try:
@@ -39,8 +40,14 @@ for row in reader:
     # replace multiple spaces with only one for easier parsing
     for i in range(len(row)):
         row[i] = ' '.join(row[i].split())
-    
+
+    # parse and trim title to remove multiple words    
     title = row[1].lower()
+    match = re.search(r'( [^ a-zA-Z0-9\-]| or|/)', title)
+    if match:
+        title = title[:match.start(0)]
+
+
     text = row[2]
     url = row[4]
 
@@ -52,7 +59,7 @@ for row in reader:
     meaning = text[meaningStart:meaningEnd]
     countries = text[countryStart: countryEnd]
 
-    # parse all countries or put unspecified
+    # parse all countries or put in unspecified category
     countryList = []
     if any(c in countries for c in variousCountries):
         countryList.append('')
@@ -62,9 +69,6 @@ for row in reader:
                 countryList.append(c)
         if len(countryList) == 0:
             countryList.append('')
-
-    # title = regex.sub('', title).strip()
-    # country = regex.sub('', country).strip()
 
     for c in countryList: 
         if c not in glossary:

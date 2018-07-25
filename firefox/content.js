@@ -14,7 +14,7 @@ $(function() {
 	let glossaryName = language + '-glossary'
 
 	// get glossary
-	chrome.storage.sync.get(glossaryName, (data) => {
+	browser.storage.sync.get(glossaryName, (data) => {
 		fetch(data[glossaryName])
 			.then((resp) => resp.json())
 			.then((json) => {
@@ -29,7 +29,7 @@ $(function() {
 	})
 
 	// gives the popup info about this page
-	chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+	browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
 		    if (request.type == 'VIVA_PAGE_INFO') {
 		    	sendResponse({country: getCountry(), language: language})
 		    }
