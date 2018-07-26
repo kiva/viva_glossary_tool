@@ -14,18 +14,12 @@ $(function() {
 	let glossaryName = language + '-glossary'
 
 	// get glossary
-	browser.storage.sync.get(glossaryName, (data) => {
-		fetch(data[glossaryName])
-			.then((resp) => resp.json())
-			.then((json) => {
-				glossary = {...json[''], ...json[getCountry()]}
-				console.log(`Finished loading ${language} glossary`)
-				highlightTerms()
-			})
-			.catch((err) => {
-				console.log(`Could not load ${language} glossary`)
-				console.log(err)
-			})
+	browser.storage.local.get(glossaryName, (data) => {
+
+		let g = data[glossaryName]
+		glossary = {...g[''], ...g[getCountry()]}
+		console.log(`Finished loading ${language} glossary`)
+		highlightTerms()
 	})
 
 	// gives the popup info about this page

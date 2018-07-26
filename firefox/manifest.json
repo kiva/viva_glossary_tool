@@ -5,7 +5,9 @@
     "manifest_version": 2,
     "permissions": [
         "activeTab",
-        "storage"
+        "storage",
+        "unlimitedStorage",
+        "https://kiva.forumbee.com/api/2/*"
     ],
     "background": {
         "scripts": ["background.js"],

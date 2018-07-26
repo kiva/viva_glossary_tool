@@ -8,19 +8,16 @@ $(function() {
 			if (resp) {
 				pageCountry = resp.country
 				pageLang = resp.language
-				console.log(resp)
 			}
 
 			$('#languages').val(pageLang)
-			console.log(pageCountry)
+
+			getGlossary(pageLang, function () {
+				$('#countries').val(pageCountry)
+			})
 		});
 	});
 	
-	getGlossary(pageLang, function () {
-		$('#countries').val(pageCountry)
-	})
-	
-
 	$('#search-input').on('input', displayTerm)
 	$('#countries').on('change', displayTerm)
 
@@ -57,17 +54,18 @@ $(function() {
 
 	function getGlossary(name, callback) {
 		let glossaryName = name + '-glossary'
-		chrome.storage.sync.get(glossaryName, (data) => {
-			fetch(data[glossaryName])
-				.then((resp) => resp.json())
-				.then((json) => {
-					glossary = json
-					for (let country in glossary) {
-						if (country !== '')
-							$('#countries').append(`<option value="${country}">${country}</option>`)
-					}
-				}).then(callback)
+		chrome.storage.local.get(glossaryName, (data) => {
+			glossary = data[glossaryName]
+			for (let country of Object.keys(glossary).sort()) {
+				if (country !== '')
+					$('#countries').append(`<option value="${country}">${country}</option>`)
+			}
+			callback()
 		})
 	}
+
+	$('#reload').click(function() {
+		chrome.runtime.reload()
+	})
 })
 
