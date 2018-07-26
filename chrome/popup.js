@@ -11,14 +11,13 @@ $(function() {
 			}
 
 			$('#languages').val(pageLang)
+
+			getGlossary(pageLang, function () {
+				$('#countries').val(pageCountry)
+			})
 		});
 	});
 	
-	getGlossary(pageLang, function () {
-		$('#countries').val(pageCountry)
-	})
-	
-
 	$('#search-input').on('input', displayTerm)
 	$('#countries').on('change', displayTerm)
 
