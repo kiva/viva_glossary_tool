@@ -14,12 +14,27 @@ $(function() {
 
 			getGlossary(pageLang, function () {
 				$('#countries').val(pageCountry)
+				updateAutocomplete()
 			})
 		});
 	});
 
-	$('#search-input').on('input', displayTerm)
-	$('#countries').on('change', displayTerm)
+	$('#search-input').on('input', () => {
+		displayTerm()
+		showDatalistOnLength(2)
+	})
+	$('#countries').on('change', () => {
+		displayTerm()
+		updateAutocomplete()
+	})
+
+	function showDatalistOnLength(l) {
+		if ($('#search-input').val().length < l) {
+			$('#search-input').removeAttr('list')
+		} else {
+			$('#search-input').attr('list', 'glossary-terms')
+		}
+	}
 
 	function displayTerm() {
 		let term = $('#search-input').val().toLowerCase()
@@ -40,6 +55,7 @@ $(function() {
 			if (pageLang === $(this).val()) {
 				$('#countries').val(pageCountry)
 			}
+			updateAutocomplete()
 		})
 	})
 
@@ -62,6 +78,19 @@ $(function() {
 			}
 			callback()
 		})
+	}
+
+	function updateAutocomplete() {
+		console.log('updating')
+		$('#glossary-terms').empty()
+		let keys = ['', $('#countries').val()]
+
+		for (let key of keys) {
+			for (let term in glossary[key]) {
+				console.log(term)
+				$('#glossary-terms').append(`<option value="${term}">`)
+			}
+		}
 	}
 
 	$('#reload').click(function() {
