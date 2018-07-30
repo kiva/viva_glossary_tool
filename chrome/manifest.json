@@ -1,6 +1,6 @@
 {
     "name": "Kiva Viva Glossary Tool",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Translation tooltip and popup for the ForumBee glossary.",
     "manifest_version": 2,
     "permissions": [
