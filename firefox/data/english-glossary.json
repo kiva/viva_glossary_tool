@@ -104,7 +104,7 @@
             "meaning": "see mairunji",
             "url": "/t/k9z4ta"
         },
-        "loosen, body loosen": {
+        "loosen": {
             "meaning": "\"loosen\" is used in loan descriptions posted from Timor-Leste, usually as part of the phrase \"body loosen\" -- in context the word appears to be a misspelling of \"lotion\"",
             "url": "/t/63z4m5"
         },
@@ -168,7 +168,7 @@
             "meaning": "local brandies made from any number of fruits: apples, plums, etc.",
             "url": "/t/q5z4y0"
         },
-        "rickshaw, auto-rickshaw, motor-rickshaw": {
+        "rickshaw": {
             "meaning": "Historically, a rickshaw is a human-powered transportation device (1). Today, it is likely to be powered by a motorcycle (2), even if it is referred to simply as a rickshaw as in this humorous account from Pakistan (3). Therefore, when editing a loan, you will likely need to choose \"Motorcycle Transport\" rather than \"Rickshaw\" in the Sector/Activity field.",
             "url": "/t/x1z4y1"
         },
@@ -362,7 +362,7 @@
             "meaning": "a Khmer word meaning a kind of small freshwater clam",
             "url": "/t/80z4mn"
         },
-        "moto kangbei, moto-kang-bei": {
+        "moto kangbei": {
             "meaning": "a three-wheeled motorcycle taxi, also known as \"tuk-tuk\"",
             "url": "/t/18z46q"
         },
@@ -610,7 +610,7 @@
             "meaning": "great cane rat, sold as bushmeat in Ghana",
             "url": "/t/18z4ff"
         },
-        "hawk, hawking": {
+        "hawk": {
             "meaning": "selling door-to-door; selling on foot",
             "url": "/t/m2z4lc"
         },
@@ -646,7 +646,7 @@
             "meaning": "powdered cassava; cassava flour",
             "url": "/t/63z4td"
         },
-        "kontomire, kontommire": {
+        "kontomire": {
             "meaning": "African spinach. A dark, leafy vegetable rich in vitamin A and other nutrients.",
             "url": "/t/x1z4tb"
         },
@@ -714,7 +714,7 @@
             "meaning": "mini-van",
             "url": "/t/18zcvt"
         },
-        "tuozafi, tuo zaafi, tz, t-z": {
+        "tuozafi": {
             "meaning": "a thick porridge of corn flour eaten by dipping a piece into soup",
             "url": "/t/63zcv3"
         },
@@ -808,7 +808,7 @@
             "meaning": "okra",
             "url": "/t/63z4t3"
         },
-        "loin loom, loins": {
+        "loin loom": {
             "meaning": "A \"loin loom\" is a kind of backstrap loom. \"Loins\" refers to the thread used in the weaving process.",
             "url": "/t/q5z4m2"
         },
@@ -1040,7 +1040,7 @@
             "meaning": "a small two-inch long fish found in Lake Victoria in Western Kenya",
             "url": "/t/63z48q"
         },
-        "panga, also called lipang, elipanga": {
+        "panga": {
             "meaning": "machete, bush knife",
             "url": "/t/q5z4xj"
         },
@@ -1084,7 +1084,7 @@
             "meaning": "flour",
             "url": "/t/18zc9d"
         },
-        "zero-grazing, zero grazing": {
+        "zero-grazing": {
             "meaning": "stall-feeding. To raise improved breeds of livestock under confined conditions in order to make better use of limited land area, feed and organic resources. An important benefit is greater efficiency in collecting manure for use in market vegetable production.",
             "url": "/t/h4zc4n/zero-grazing-zero-grazing"
         }
@@ -1100,7 +1100,7 @@
             "meaning": "a fermented milk drink",
             "url": "/t/36z4zh"
         },
-        "raion, rayon": {
+        "raion": {
             "meaning": "an administrative district in some Soviet states and post-Soviet countries",
             "url": "/t/y7z4yc"
         },
@@ -1210,7 +1210,7 @@
             "meaning": "Philippines: a common abbreviation for \"Maria,\" this can be left as-is, e.g., Ma. Ann Reyes. Liberia: an abbreviation of Madam.",
             "url": "/t/36z4mk/ma"
         },
-        "maggi, maggi cubes": {
+        "maggi": {
             "meaning": "a product for enhancing the flavor of soups and stews; very popular in Sierra Leone",
             "url": "/t/80z4m6"
         },
@@ -1370,7 +1370,7 @@
             "meaning": "yam tubers peeled or sliced, parboiled and sun-dried. Also called \u201cgbodo\u201d and is an intermediate product to be milled into yam flour, called \u201celubo\u201d.",
             "url": "/t/63z4k4"
         },
-        "dstv, dstv": {
+        "dstv": {
             "meaning": "Digital Satellite Television",
             "url": "/t/m2z4kc"
         },
@@ -1460,7 +1460,7 @@
             "meaning": "yam tubers peeled or sliced, parboiled and sun-dried. Also called \u201cgbodo\u201d and is an intermediate product to be milled into yam flour, called \u201celubo\u201d.",
             "url": "/t/63z4k4"
         },
-        "dstv, dstv": {
+        "dstv": {
             "meaning": "Digital Satellite Television",
             "url": "/t/m2z4kc"
         },
@@ -1728,13 +1728,13 @@
             "meaning": "milkfish - the country\u2019s national fish",
             "url": "/t/18z4jp"
         },
+        "barangay": {
+            "meaning": "village",
+            "url": "/t/h4z4jl"
+        },
         "barangay kagawad": {
             "meaning": "a village councilor. A member of the Sangguniang Barangay (Filipino, \"Barangay Council\") of a particular barangay (see above). Formerly called konsehal (\"councilor\")",
             "url": "/t/q5z4jf"
-        },
-        "barangay, baranggay": {
-            "meaning": "village",
-            "url": "/t/h4z4jl"
         },
         "barong": {
             "meaning": "a typical Filipino formal shirt for men",
@@ -1792,7 +1792,7 @@
             "meaning": "beef marrow soup",
             "url": "/t/80z4gf"
         },
-        "buli, buri": {
+        "buli": {
             "meaning": "raffia: prepared from the leaves from the Buli or Buri Palm and used for weaving fans, hats, baskets, shoes, etc. The Buli or Buri Palm is the source of palm flour, buri, raffia, and buntal.",
             "url": "/t/k9z4gl"
         },
@@ -1872,7 +1872,7 @@
             "meaning": "Ice cream that is sold on the streets, thus exposing it to pollution, though it's not really dirty per se",
             "url": "/t/80z413"
         },
-        "electronic load, e-loading": {
+        "electronic load": {
             "meaning": "prepaid cell phone credits. Mainly used for text messaging (for cash transfer) as opposed to cell phone calls. Small businesses (especially sari-sari stores) sign up to be authorized dealers for a particular cellular provider.",
             "url": "/t/m2z4k2/electronic-load-e-loading"
         },
@@ -1944,7 +1944,7 @@
             "meaning": "Hacienda (in the past, referred to large tracts of farm land, but now frequently part of the names of villages that stand where the farm land once was)",
             "url": "/t/x1z4la/hda"
         },
-        "homay,": {
+        "homay": {
             "meaning": "rice",
             "url": "/t/y7z4l7"
         },
@@ -2052,7 +2052,7 @@
             "meaning": "Edible seaweed. Also appears in Google search as \"lato.\"",
             "url": "/t/36z4m4"
         },
-        "lechon, letchon": {
+        "lechon": {
             "meaning": "Philippine-style roasted pig",
             "url": "/t/m2z4ms"
         },
@@ -2152,7 +2152,7 @@
             "meaning": "See \"tikoy\".",
             "url": "/t/18z48p"
         },
-        "okay-okay, okay2x": {
+        "okay-okay": {
             "meaning": "see ukay-ukay",
             "url": "/t/q5z48y"
         },
@@ -2276,7 +2276,7 @@
             "meaning": "Tapioca pearls",
             "url": "/t/x1fdvq/sago"
         },
-        "sari-sari, sari2x": {
+        "sari-sari": {
             "meaning": "local convenience shop; \"sari-sari\" is Tagalog for \"various kinds\" and the shops sell just that: an assortment of basic foodstuffs, beverages, and everyday commodities. The short form \"sari2x\" may be found in some profiles; replace this with \"sari-sari\".",
             "url": "/t/36z4hn"
         },
@@ -2500,7 +2500,7 @@
             "meaning": "They are banana seedlings. People call them banana tubes here because they are shaped like a tube, about the size of a forearm. These are planted and what a banana tree eventually grows from.",
             "url": "/t/m2z4j5/banana-tube"
         },
-        "coolio, coolio": {
+        "coolio": {
             "meaning": "a brand-name cooler box (Coolio)",
             "url": "/t/36z41r"
         },
@@ -2524,7 +2524,7 @@
             "meaning": "A traditional Polynesian cloth worn as a skirt by men and women",
             "url": "/t/q5z4mc"
         },
-        "taamu, ta'amu": {
+        "taamu": {
             "meaning": "giant taro (Alocasia macrorrhiza). A large root vegetable like taro.",
             "url": "/t/80z4q8"
         },
@@ -2628,7 +2628,7 @@
             "meaning": "makeshift business center",
             "url": "/t/80z4mp"
         },
-        "maggi, maggi cubes": {
+        "maggi": {
             "meaning": "a product for enhancing the flavor of soups and stews; very popular in Sierra Leone",
             "url": "/t/80z4m6"
         },
@@ -2752,7 +2752,7 @@
             "meaning": "a traditional beer",
             "url": "/t/h4z4tx"
         },
-        "phase, phaste": {
+        "phase": {
             "meaning": "misspelling of \"paste\"; a product of groundnut or simsim that has been ground or crushed into liquid",
             "url": "/t/x1z4xx"
         },
@@ -3084,7 +3084,7 @@
             "meaning": "a local brew; a homemade gin (moonshine) particular to Uganda",
             "url": "/t/36zc9h"
         },
-        "zero-grazing, zero grazing": {
+        "zero-grazing": {
             "meaning": "stall-feeding. To raise improved breeds of livestock under confined conditions in order to make better use of limited land area, feed and organic resources. An important benefit is greater efficiency in collecting manure for use in market vegetable production.",
             "url": "/t/h4zc4n/zero-grazing-zero-grazing"
         }

@@ -65,7 +65,7 @@ async function getGlossaries() {
 	}
 }
 
-let re = /( [^ a-zA-Z0-9\-]| or|\/)/
+let re = /( [^ a-zA-Z0-9\-]| or|\/|,)/
 let countryUrl = browser.runtime.getURL('data/countries.txt');
 let variousCountries = [
     'other',
