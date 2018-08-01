@@ -3,6 +3,7 @@ $(function() {
 	let pageCountry = 'Afghanistan'
 	let glossary = {}
 
+	// request language and country from the content script
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {type: 'VIVA_PAGE_INFO'}, function(resp) {
 			if (resp) {
@@ -19,15 +20,32 @@ $(function() {
 		});
 	});
 
+	// when the user types into the search input, display the definition if there is one
+	// and show autocomplete suggestions if the input is more than 2 characters long
 	$('#search-input').on('input', () => {
 		displayTerm()
 		showDatalistOnLength(2)
 	})
+
+	// when the user selects a different country, automatically search for definition again
+	// and update the autocomplete to show words from that country
 	$('#countries').on('change', () => {
 		displayTerm()
 		updateAutocomplete()
 	})
 
+	// update glossary and change country selections when the user's language choice changes
+	$('#languages').on('change', function () {
+		$('#countries').empty()
+		getGlossary($(this).val(), () => {
+			if (pageLang === $(this).val()) {
+				$('#countries').val(pageCountry)
+			}
+			updateAutocomplete()
+		})
+	})
+
+	// only shows the autocomplete suggestions when the length of input is long enough
 	function showDatalistOnLength(l) {
 		if ($('#search-input').val().length < l) {
 			$('#search-input').removeAttr('list')
@@ -36,6 +54,7 @@ $(function() {
 		}
 	}
 
+	// shows the definition of the search if applicable
 	function displayTerm() {
 		let term = $('#search-input').val().toLowerCase()
 		let data = getTerm(term)
@@ -48,17 +67,7 @@ $(function() {
 		}
 	}
 
-	// update glossary and change country selections when language changes
-	$('#languages').on('change', function () {
-		$('#countries').empty()
-		getGlossary($(this).val(), () => {
-			if (pageLang === $(this).val()) {
-				$('#countries').val(pageCountry)
-			}
-			updateAutocomplete()
-		})
-	})
-
+	// attempts to find the term in both the country glossary and the uncategorized glossary
 	function getTerm(term) {
 		let country = $('#countries').val()
 		if (country && glossary[country][term]) {
@@ -68,6 +77,7 @@ $(function() {
 		}
 	}
 
+	// gets the glossary from storage, set by the background script
 	function getGlossary(name, callback) {
 		let glossaryName = name + '-glossary'
 		chrome.storage.local.get(glossaryName, (data) => {
@@ -80,6 +90,7 @@ $(function() {
 		})
 	}
 
+	// clears the autocomplete suggestions and loads in ones from the current country
 	function updateAutocomplete() {
 		console.log('updating')
 		$('#glossary-terms').empty()
@@ -93,6 +104,7 @@ $(function() {
 		}
 	}
 
+	// reload extension button
 	$('#reload').click(function() {
 		chrome.runtime.reload()
 	})

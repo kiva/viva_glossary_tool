@@ -1,0 +1,27 @@
+{
+  "name": "viva_glossary_tool",
+  "version": "1.0.0",
+  "description": "Translation tooltip and popup for the ForumBee glossary. Chrome and Firefox extensions.",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinzwang/viva_glossary_tool.git"
+  },
+  "keywords": [
+    "kiva"
+  ],
+  "author": "Kevin Wang",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/kevinzwang/viva_glossary_tool/issues"
+  },
+  "homepage": "https://github.com/kevinzwang/viva_glossary_tool#readme",
+  "dependencies": {
+    "sinon-chrome": "^2.3.2"
+  }
+}
