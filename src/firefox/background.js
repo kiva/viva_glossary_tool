@@ -9,27 +9,33 @@ let glossaries = {
 browser.runtime.onInstalled.addListener(init)
 browser.runtime.onStartup.addListener(init)
 
-
+// loads the glossary from ForumBee, using local glossary as backup
 function init() {
-	getGlossaries().catch(() => {
+	getGlossaries().catch(() => { // if couldn't get the ForumBee glossaries, fall back to local ones
 		console.log('Could not get ForumBee. Using local glossary instead.')
-		for (let lang in glossaries) {
-			let glossaryName = lang + '-glossary'
-			const url = browser.runtime.getURL('data/' + glossaryName + '.json');
-
-			fetch(url).then((resp) => {
-				return resp.json()
-			}).then((data) => {
-				let obj = {}
-				obj[glossaryName] = data
-				browser.storage.local.set(obj, function() {
-			        console.log(lang + ' glossary set!');
-			    });
-			})
-		}
+		getLocalGlossaries()
 	})
 }
 
+// puts the pre-parsed glossaries from data/ into storage
+function getLocalGlossaries() {
+	for (let lang in glossaries) {
+		let glossaryName = lang + '-glossary'
+		const url = browser.runtime.getURL('data/' + glossaryName + '.json');
+
+		fetch(url).then((resp) => {
+			return resp.json()
+		}).then((data) => {
+			let obj = {}
+			obj[glossaryName] = data
+			browser.storage.local.set(obj, function() {
+		        console.log(lang + ' glossary set!');
+		    });
+		})
+	}
+}
+
+// queries the ForumBee glossaries from all the languages and puts them into storage
 async function getGlossaries() {
 	for (let lang in glossaries) {
 		console.log('starting ' + lang)
@@ -65,8 +71,11 @@ async function getGlossaries() {
 	}
 }
 
+// parse by cutting off at non-letter character, " or", or ","
 let re = /( [^ a-zA-Z0-9\-]| or|\/|,)/
+// path to list of all countries to parse country data for each term
 let countryUrl = browser.runtime.getURL('data/countries.txt');
+// if any of these match, the term should go in uncategorized
 let variousCountries = [
     'other',
     'etc',
@@ -74,6 +83,7 @@ let variousCountries = [
     'many',
 ]
 
+// Takes in a ForumBee glossary API response, parses terms, and sorts them by language
 async function parseGlossary (data) {
 	let glossary = {}
 	for (let entry of data) {
@@ -122,6 +132,8 @@ async function parseGlossary (data) {
 	return glossary
 }
 
+// check if two glossaries have commmon entries in order to stop ForumBee queries,
+// since ForumBee simply loops back if the offset is out of bounds
 function haveCommonEntries(d1, d2) {
 	for (let e1 of d1) {
 		for (let e2 of d2) {

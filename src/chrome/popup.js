@@ -1,6 +1,6 @@
 $(function() {
 	let pageLang = 'english'
-	let pageCountry = 'Afghanistan'
+	let pageCountry = 'All Countries'
 	let glossary = {}
 
 	// request language and country from the content script
@@ -70,10 +70,18 @@ $(function() {
 	// attempts to find the term in both the country glossary and the uncategorized glossary
 	function getTerm(term) {
 		let country = $('#countries').val()
-		if (country && glossary[country][term]) {
-			return glossary[country][term]
+		if (country === 'All Countries') {
+			for (let c in glossary) {
+				if (glossary[c][term]) {
+					return glossary[c][term]
+				}
+			}
 		} else {
-			return glossary[''][term]
+			if (country && glossary[country][term]) {
+				return glossary[country][term]
+			} else {
+				return glossary[''][term]
+			}
 		}
 	}
 
@@ -82,6 +90,7 @@ $(function() {
 		let glossaryName = name + '-glossary'
 		chrome.storage.local.get(glossaryName, (data) => {
 			glossary = data[glossaryName]
+			$('#countries').append(`<option value="All Countries">All Countries</option>`)
 			for (let country of Object.keys(glossary).sort()) {
 				if (country !== '')
 					$('#countries').append(`<option value="${country}">${country}</option>`)
@@ -94,12 +103,19 @@ $(function() {
 	function updateAutocomplete() {
 		console.log('updating')
 		$('#glossary-terms').empty()
-		let keys = ['', $('#countries').val()]
+		if ($('#countries').val() === 'All Countries') {
+			for (let key in glossary) {
+				for (let term in glossary[key]) {
+					$('#glossary-terms').append(`<option value="${term}">`)
+				}
+			}
+		} else {
+			let keys = ['', $('#countries').val()]
 
-		for (let key of keys) {
-			for (let term in glossary[key]) {
-				console.log(term)
-				$('#glossary-terms').append(`<option value="${term}">`)
+			for (let key of keys) {
+				for (let term in glossary[key]) {
+					$('#glossary-terms').append(`<option value="${term}">`)
+				}
 			}
 		}
 	}
