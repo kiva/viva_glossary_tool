@@ -62,7 +62,14 @@ $(function() {
 			$('#results').html(`${data.meaning}<br><a target="_blank" class="forumbee-link" href="https://kiva.forumbee.com${data.url}">Read more</a>`)
 			$('#results').addClass('definition')
 		} else {
-			$('#results').text('The definition will appear here.')
+			if (term) {
+				$('#results').text('No results.')
+			} else {
+				$('#results').html(`
+					The definition will appear here.
+					<br><br>
+					Click "Reload Extension" to get the latest version of the glossaries if you are logged into Colibri.
+				`)			}
 			$('#results').removeClass('definition')
 		}
 	}
