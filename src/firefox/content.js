@@ -33,7 +33,13 @@ $(function() {
 	// scrapes the name of the country from the current Viva page
 	function getCountry() {
 		let location = $('a[href="#country-section"]').text()
-		return location.slice(location.lastIndexOf(',') + 2)
+		let separator = location.lastIndexOf(',')
+		if (separator != -1) {
+			return location.slice(location.lastIndexOf(',') + 2)
+		} else {
+			return location.trim()
+		}
+		
 	}
 
 	// currentText stores the text without the tooltips so that the editor area doesn't have them

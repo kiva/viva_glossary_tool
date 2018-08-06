@@ -104,9 +104,13 @@ $(function() {
 		console.log('updating')
 		$('#glossary-terms').empty()
 		if ($('#countries').val() === 'All Countries') {
+			let prevTerms = []
 			for (let key in glossary) {
 				for (let term in glossary[key]) {
-					$('#glossary-terms').append(`<option value="${term}">`)
+					if (!prevTerms.includes(term)) {
+						$('#glossary-terms').append(`<option value="${term}">`)
+						prevTerms.push(term)
+					}
 				}
 			}
 		} else {
