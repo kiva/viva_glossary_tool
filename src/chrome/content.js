@@ -19,7 +19,8 @@ $(function() {
 		let g = data[glossaryName]
 		glossary = {...g[''], ...g[getCountry()]}
 		console.log(`Finished loading ${language} glossary`)
-		highlightTerms()
+		getOriginalText()
+		highlightTerms(['.editorOriginalText:eq(1)', '.loan-description'])
 	})
 
 	// gives the popup the language and country of this page
@@ -35,12 +36,40 @@ $(function() {
 		return location.slice(location.lastIndexOf(',') + 2)
 	}
 
-	// highlight and add tooltip to words that match glossary terms
-	function highlightTerms() {
-		let highlightSections = ['.editorOriginalText', '.loan-description']
+	// currentText stores the text without the tooltips so that the editor area doesn't have them
+	let currentText
 
-		// find all words that appear in glossary and wrap them with spans
-		for (section of highlightSections) {
+	function getOriginalText() {
+		currentText = $('.loan-description').text().trim()
+	}
+
+	$('.loan-description').click(function () {
+		$('.bodyText').val(currentText)
+	})
+
+	function saveCurrentText() {
+		currentText = $('.bodyText').val()
+	}
+
+	$('.editorSave:eq(2)').click(saveCurrentText)
+	$('.editorSave:eq(3)').click(saveCurrentText)
+	
+
+	// Below are my failed attempts to update the highlighted on change
+
+	// function setCurrentText() {
+	// 	console.log('setting current text')
+	// 	// $('.loan-description').html(currentText)
+	// 	highlightTerms(['.loan-description'])
+	// }
+
+	// $('.editorClose:eq(1)').click(setCurrentText)
+	// $('.cancelClose:eq(5)').click(setCurrentText)
+
+	// highlight and add tooltip to words that match glossary terms
+	function highlightTerms(highlightSections) {
+		for (let section of highlightSections) {
+			// find all words that appear in glossary and wrap them with spans
 			let descr = $(section)
 			if (descr.length) {
 				for (let word in glossary) {
@@ -50,20 +79,24 @@ $(function() {
 						.replace(re, '<span class="highlight"><a target="_blank">$&</a></span>'))
 				}
 			}
-		}
-		// add links and tooltips to highlighted words
-		$('.highlight').each(function() {
-			let entry = glossary[$(this).text().toLowerCase()]
-			let meaning = entry.meaning
 
-			// cut off definition by arbitrary length if too long
-			if (language.length + meaning.length > 128) {
-				meaning = meaning.substring(0, 128 - language.length - '...'.length) + '...'
-			}
-			
-			$(this).find('a').attr('href', 'https://kiva.forumbee.com' + entry.url)
-			$(this).append(`<span class="viva-tooltip"><span style="text-decoration:underline">${language.charAt(0).toUpperCase() + language.slice(1)}</span>: ${meaning}</span>`)
-		})
+			console.log('adding tooltips')
+
+			// add links and tooltips to highlighted words
+			descr.children('.highlight').each(function() {
+				console.log(this)
+				let entry = glossary[$(this).text().toLowerCase()]
+				let meaning = entry.meaning
+
+				// cut off definition by arbitrary length if too long
+				if (language.length + meaning.length > 128) {
+					meaning = meaning.substring(0, 128 - language.length - '...'.length) + '...'
+				}
+				
+				$(this).find('a').attr('href', 'https://kiva.forumbee.com' + entry.url)
+				$(this).append(`<span class="viva-tooltip"><span style="text-decoration:underline">${language.charAt(0).toUpperCase() + language.slice(1)}</span>: ${meaning}</span>`)
+			})
+		}
 	}
 
 })

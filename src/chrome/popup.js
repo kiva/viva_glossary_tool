@@ -67,7 +67,7 @@ $(function() {
 		}
 	}
 
-	// attempts to find the term in both the country glossary and the uncategorized glossary
+	// attempts to find the term in either the country glossary and the uncategorized glossary
 	function getTerm(term) {
 		let country = $('#countries').val()
 		if (country === 'All Countries') {
