@@ -104,11 +104,14 @@ $(function() {
 		}
 	}
 
+	$('#ac-loan-story-body').addClass('show-tooltip-no-cutoff')
+
 	$('div[aria-controls="ac-loan-story-body"]').click(function () {
-		if ($(this).attr('aria-expanded') === true) {
-			$('#ac-loan-story-body').css('overflow', 'visible')
+		console.log('attr = ' + $(this).attr('aria-expanded'))
+		if ($(this).attr('aria-expanded') === 'true') {
+			$('#ac-loan-story-body').addClass('show-tooltip-no-cutoff')
 		} else {
-			$('#ac-loan-story-body').css('overflow', 'hidden')
+			$('#ac-loan-story-body').removeClass('show-tooltip-no-cutoff')
 		}
 	})
 })
