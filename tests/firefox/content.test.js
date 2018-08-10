@@ -1,5 +1,5 @@
 var fs = require('fs');
-var chrome = require('sinon-chrome');
+var browser = require('sinon-chrome/webextensions');
 var sinon = require('sinon');
 var assert = require('chai').assert;
 var fetchMock = require('fetch-mock')
@@ -19,19 +19,19 @@ describe('content script', function() {
         let virtualConsole = new jsdom.VirtualConsole()
         virtualConsole.sendTo(console)
         window = new JSDOM('<html></html>', {virtualConsole, runScripts: "dangerously"}).window
-        window.chrome = chrome
+        window.browser = browser
         window.fetch = fetch
         window.$ = sinon.stub()
 
         const script = window.document.createElement("script")
         script.type = "text/javascript";
-        script.innerHTML = fs.readFileSync('src/chrome/content.js', 'utf-8')
+        script.innerHTML = fs.readFileSync('src/firefox/content.js', 'utf-8')
         window.document.body.appendChild(script)
 
         done()
     })
     afterEach(function() {
-        chrome.reset()
+        browser.reset()
         window.close()
         fetchMock.restore()
     })

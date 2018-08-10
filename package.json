@@ -6,7 +6,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha --require isomorphic-fetch"
+    "test": "mocha --require isomorphic-fetch tests/*/*.test.js"
   },
   "repository": {
     "type": "git",

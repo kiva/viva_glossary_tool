@@ -1,5 +1,5 @@
 var fs = require('fs');
-var chrome = require('sinon-chrome');
+var browser = require('sinon-chrome/webextensions');
 var sinon = require('sinon');
 var assert = require('chai').assert;
 var fetchMock = require('fetch-mock')
@@ -19,26 +19,26 @@ describe('background page', function() {
         let virtualConsole = new jsdom.VirtualConsole()
         // virtualConsole.sendTo(console)
         window = new JSDOM('<html></html>', {virtualConsole, runScripts: "dangerously"}).window
-        window.chrome = chrome
+        window.browser = browser
         window.fetch = fetch
 
 
         const script = window.document.createElement("script")
         script.type = "text/javascript";
-        script.innerHTML = fs.readFileSync('src/chrome/background.js', 'utf-8')
+        script.innerHTML = fs.readFileSync('src/firefox/background.js', 'utf-8')
         window.document.body.appendChild(script)
 
         done()
     })
     afterEach(function() {
-        chrome.reset()
+        browser.reset()
         window.close()
         fetchMock.restore()
     })
 
     it('should add listeners for after installation and after startup', function() {
-        assert(chrome.runtime.onInstalled.addListener.calledWith(window.init), 'function init not added as listener to onInstalled')
-        assert(chrome.runtime.onStartup.addListener.calledWith(window.init), 'function init not added as listener to onStartup')
+        assert(browser.runtime.onInstalled.addListener.calledWith(window.init), 'function init not added as listener to onInstalled')
+        assert(browser.runtime.onStartup.addListener.calledWith(window.init), 'function init not added as listener to onStartup')
     })
 
     it('should get glossaries on initialize', function() {

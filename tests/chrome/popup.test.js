@@ -9,7 +9,7 @@ var { JSDOM } = jsdom
 
 sinon.assert.expose(assert, {prefix: ''});
 
-describe('content script', function() {
+describe('popup page', function() {
 
     var window
 
@@ -18,15 +18,9 @@ describe('content script', function() {
 
         let virtualConsole = new jsdom.VirtualConsole()
         virtualConsole.sendTo(console)
-        window = new JSDOM('<html></html>', {virtualConsole, runScripts: "dangerously"}).window
+        window = new JSDOM(fs.readFileSync('src/chrome/popup.html', 'utf-8'), {virtualConsole, runScripts: "dangerously"}).window
         window.chrome = chrome
         window.fetch = fetch
-        window.$ = sinon.stub()
-
-        const script = window.document.createElement("script")
-        script.type = "text/javascript";
-        script.innerHTML = fs.readFileSync('src/chrome/content.js', 'utf-8')
-        window.document.body.appendChild(script)
 
         done()
     })
@@ -36,7 +30,7 @@ describe('content script', function() {
         fetchMock.restore()
     })
 
-    it('should load the script to the DOM without errors', function () {
+    it('should load the page and the script without errors', function () {
 
     })
 
