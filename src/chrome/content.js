@@ -104,4 +104,11 @@ $(function() {
 		}
 	}
 
+	$('div[aria-controls="ac-loan-story-body"]').click(function () {
+		if ($(this).attr('aria-expanded') === true) {
+			$('#ac-loan-story-body').css('overflow', 'visible')
+		} else {
+			$('#ac-loan-story-body').css('overflow', 'hidden')
+		}
+	})
 })
