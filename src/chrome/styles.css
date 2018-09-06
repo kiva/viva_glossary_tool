@@ -32,6 +32,6 @@
     opacity: 1;
 }
 
-#ac-loan-story-body {
-	overflow: visible;
+.show-tooltip-no-cutoff {
+	overflow: visible!important;
 }

@@ -74,23 +74,32 @@ $(function() {
 				}
 			}
 
-			console.log('adding tooltips')
-
 			// add links and tooltips to highlighted words
-			descr.children('.highlight').each(function() {
-				console.log(this)
+			$('.highlight').each(function() {
 				let entry = glossary[$(this).text().toLowerCase()]
-				let meaning = entry.meaning
+				if (entry) {
+					let meaning = entry.meaning
 
-				// cut off definition by arbitrary length if too long
-				if (language.length + meaning.length > 128) {
-					meaning = meaning.substring(0, 128 - language.length - '...'.length) + '...'
-				}
-				
-				$(this).find('a').attr('href', 'https://kiva.forumbee.com' + entry.url)
-				$(this).append(`<span class="viva-tooltip"><span style="text-decoration:underline">${language.charAt(0).toUpperCase() + language.slice(1)}</span>: ${meaning}</span>`)
+					// cut off definition by arbitrary length if too long
+					if (language.length + meaning.length > 128) {
+						meaning = meaning.substring(0, 128 - language.length - '...'.length) + '...'
+					}
+					
+					$(this).find('a').attr('href', 'https://kiva.forumbee.com' + entry.url)
+					$(this).append(`<span class="viva-tooltip"><span style="text-decoration:underline">${language.charAt(0).toUpperCase() + language.slice(1)}</span>: ${meaning}</span>`)
+				}			
 			})
 		}
 	}
 
+	$('#ac-loan-story-body').addClass('show-tooltip-no-cutoff')
+
+	$('div[aria-controls="ac-loan-story-body"]').click(function () {
+		console.log('attr = ' + $(this).attr('aria-expanded'))
+		if ($(this).attr('aria-expanded') === 'true') {
+			$('#ac-loan-story-body').addClass('show-tooltip-no-cutoff')
+		} else {
+			$('#ac-loan-story-body').removeClass('show-tooltip-no-cutoff')
+		}
+	})
 })
