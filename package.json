@@ -23,7 +23,7 @@
   "homepage": "https://github.com/kevinzwang/viva_glossary_tool#readme",
   "dependencies": {
     "chai": "^4.1.2",
-    "jsdom": "^11.12.0",
+    "jsdom": "^16.5.0",
     "mocha": "^5.2.0",
     "sinon": "^6.1.4",
     "sinon-chrome": "^2.3.2"
